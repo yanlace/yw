@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "dgSpecHash": "7+ZofdCftZM3O7IZnGy/TuWWigOynbOPEbRJrsd+wDOyBd+i8BKXgaDQ5Mq+GO/R52kz4Ugx/GGRsdS8O3P+wg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\yaniz\\source\\repos\\Bank\\Bank.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\yaniz\\.nuget\\packages\\apache.nms\\1.8.0\\apache.nms.1.8.0.nupkg.sha512",
+    "C:\\Users\\yaniz\\.nuget\\packages\\apache.nms.activemq\\1.8.0\\apache.nms.activemq.1.8.0.nupkg.sha512",
+    "C:\\Users\\yaniz\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\yaniz\\.nuget\\packages\\microsoft.netcore.targets\\1.1.3\\microsoft.netcore.targets.1.1.3.nupkg.sha512",
+    "C:\\Users\\yaniz\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
+    "C:\\Users\\yaniz\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\yaniz\\.nuget\\packages\\stripe.net\\39.80.0\\stripe.net.39.80.0.nupkg.sha512",
+    "C:\\Users\\yaniz\\.nuget\\packages\\system.configuration.configurationmanager\\5.0.0\\system.configuration.configurationmanager.5.0.0.nupkg.sha512",
+    "C:\\Users\\yaniz\\.nuget\\packages\\system.drawing.common\\5.0.0\\system.drawing.common.5.0.0.nupkg.sha512",
+    "C:\\Users\\yaniz\\.nuget\\packages\\system.runtime\\4.3.1\\system.runtime.4.3.1.nupkg.sha512",
+    "C:\\Users\\yaniz\\.nuget\\packages\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",
+    "C:\\Users\\yaniz\\.nuget\\packages\\system.security.cryptography.protecteddata\\5.0.0\\system.security.cryptography.protecteddata.5.0.0.nupkg.sha512",
+    "C:\\Users\\yaniz\\.nuget\\packages\\system.security.permissions\\5.0.0\\system.security.permissions.5.0.0.nupkg.sha512",
+    "C:\\Users\\yaniz\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512",
+    "C:\\Users\\yaniz\\.nuget\\packages\\system.windows.extensions\\5.0.0\\system.windows.extensions.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
