@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Bank
 {
@@ -10,7 +7,7 @@ namespace Bank
     {
         public readonly string name;
         public readonly string ID;
-        public readonly DOB DOB;
+        public readonly DateTime dob;
         public readonly string nominee;
         public double balance;
         protected string type;
@@ -33,7 +30,7 @@ namespace Bank
         {
            
             Console.WriteLine("Name : " + name);
-            Console.WriteLine("Date of Birth :" + DOB);
+            Console.WriteLine("Date of Birth :" + dob);
             Console.WriteLine("Nominee : " + nominee);
             Console.WriteLine("Balance :" + balance);
         }
@@ -41,10 +38,10 @@ namespace Bank
         {
 
         }
-        public Account(string name, DOB DOB, string nominee, double balance)
+        public Account(string name, DateTime dob, string nominee, double balance)
         {
             this.name = name;
-            this.DOB = DOB;
+            this.dob = dob;
             this.nominee = nominee;
             this.balance = balance;
         }

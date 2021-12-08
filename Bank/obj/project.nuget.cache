@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4+UNPj27nIM47HMsPhWxXaHWxinG1VG6A2A3yQD86ZhCLdRI5f5roFDJJprBav/Mhmaqo/4VLWtl51/kqNb/oA==",
+  "dgSpecHash": "Uk71/7CCiQZeqxOFNjJZCbqi7nTic0DlNNLcDL5cC2KZa8FW/LmWobauwgxNHFdr3VjgT/Pzb3TWhNNZtx7zJg==",
   "success": true,
-  "projectFilePath": "/Users/drew/Downloads/Bank/Bank.csproj",
+  "projectFilePath": "/Users/drew/Desktop/yanlace/yw/Bank/Bank.csproj",
   "expectedPackageFiles": [
     "/Users/drew/.nuget/packages/apache.nms/1.8.0/apache.nms.1.8.0.nupkg.sha512",
     "/Users/drew/.nuget/packages/apache.nms.activemq/1.8.0/apache.nms.activemq.1.8.0.nupkg.sha512",

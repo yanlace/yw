@@ -1,9 +1,5 @@
 ﻿using Apache.NMS.ActiveMQ.Util;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Bank
 {
@@ -13,12 +9,7 @@ namespace Bank
         {
 
 
-            String input;
-            DOB dob = new DOB();
-            IdGenerator id = new IdGenerator();
-            Credit cr = new Credit();
-            Debit db = new Debit();
-            Savings sv = new Savings();
+            string input;
             Bank bn = new Bank();
             Console.WriteLine("****  Welcome to Bank Management System  ***");
             while (true)
@@ -38,27 +29,27 @@ namespace Bank
                 if (input == "0")
                 {
                     Console.WriteLine("Enter account Type :");
-                    bn.create_account();
+                    bn.Create_account();
 
                 }
                 else if (input == "1")
                 {
                     Console.Write("Enter account Number :");
-                    bn.showInfo();
+                    bn.ShowInfo();
                 }
                 else if (input == "2")
                 {
                     Console.WriteLine("Enter Account Id: ");
-                    bn.deposit();
+                    bn.Deposit();
                 }
                 else if (input == "3")
                 {
                     Console.WriteLine("Enter Account Id: ");
-                    bn.withdraw();
+                    bn.Withdraw();
                 }
                 else if (input == "4")
                 {
-                    bn.showAll();
+                    bn.ShowAll();
                 }
                 else if (input == "5")
                 {

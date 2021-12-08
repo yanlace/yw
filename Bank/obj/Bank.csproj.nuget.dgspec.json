@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/drew/Downloads/Bank/Bank.csproj": {}
+    "/Users/drew/Desktop/yanlace/yw/Bank/Bank.csproj": {}
   },
   "projects": {
-    "/Users/drew/Downloads/Bank/Bank.csproj": {
+    "/Users/drew/Desktop/yanlace/yw/Bank/Bank.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/drew/Downloads/Bank/Bank.csproj",
+        "projectUniqueName": "/Users/drew/Desktop/yanlace/yw/Bank/Bank.csproj",
         "projectName": "Bank",
-        "projectPath": "/Users/drew/Downloads/Bank/Bank.csproj",
+        "projectPath": "/Users/drew/Desktop/yanlace/yw/Bank/Bank.csproj",
         "packagesPath": "/Users/drew/.nuget/packages/",
-        "outputPath": "/Users/drew/Downloads/Bank/obj/",
+        "outputPath": "/Users/drew/Desktop/yanlace/yw/Bank/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/drew/.config/NuGet/NuGet.Config"

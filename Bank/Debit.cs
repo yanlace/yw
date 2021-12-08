@@ -16,7 +16,7 @@ namespace Bank
 
         }
 
-        public Debit(string name, DOB DOB, string nominee, double balance) : base(name, DOB, nominee, balance)
+        public Debit(string name, DateTime dob, string nominee, double balance) : base(name, dob, nominee, balance)
         {
 
         }
