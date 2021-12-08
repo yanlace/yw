@@ -1,5 +1,4 @@
-﻿using Apache.NMS.ActiveMQ.Util;
-using System;
+﻿using System;
 
 namespace Bank
 {
@@ -26,38 +25,34 @@ namespace Bank
                 input = Convert.ToString(ob1);
 
                 //for 0-6  funtion calling
-                if (input == "0")
+                switch (input)
                 {
-                    Console.WriteLine("Enter account Type :");
-                    bn.Create_account();
+                    case "0":
+                        Console.WriteLine("Enter account Type :");
+                        bn.Create_account();
 
-                }
-                else if (input == "1")
-                {
-                    Console.Write("Enter account Number :");
-                    bn.ShowInfo();
-                }
-                else if (input == "2")
-                {
-                    Console.WriteLine("Enter Account Id: ");
-                    bn.Deposit();
-                }
-                else if (input == "3")
-                {
-                    Console.WriteLine("Enter Account Id: ");
-                    bn.Withdraw();
-                }
-                else if (input == "4")
-                {
-                    bn.ShowAll();
-                }
-                else if (input == "5")
-                {
-                    Console.Clear();
-                }
-                else if (input == "6")
-                {
-                    Environment.Exit(0);
+                        break;
+                    case "1":
+                        Console.Write("Enter account Number :");
+                        bn.ShowInfo();
+                        break;
+                    case "2":
+                        Console.WriteLine("Enter Account Id: ");
+                        bn.Deposit();
+                        break;
+                    case "3":
+                        Console.WriteLine("Enter Account Id: ");
+                        bn.Withdraw();
+                        break;
+                    case "4":
+                        bn.ShowAll();
+                        break;
+                    case "5":
+                        Console.Clear();
+                        break;
+                    case "6":
+                        Environment.Exit(0);
+                        break;
                 }
                 Console.ReadKey();
 
