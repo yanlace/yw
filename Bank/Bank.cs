@@ -1,9 +1,7 @@
 ﻿using Apache.NMS.ActiveMQ.Util;
 using System;
-using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Bank
 {
@@ -21,7 +19,7 @@ namespace Bank
         public double[] myBalance = new double[100];
 
         IdGenerator id1 = new IdGenerator();
-        DOB dob = new DOB();
+        DateTime dob = new DateTime();
         Credit cr = new Credit();
         Debit db = new Debit();
         Savings sv = new Savings();
@@ -32,12 +30,12 @@ namespace Bank
         //id storing
         private void GetAcc(string ID)
         {
-            ID = this.id;
             myId[idnum] = ID;
             idnum++;
 
         }
-        public void showAll()
+
+        public void ShowAll()
         {
             Console.WriteLine("All accounts are:\n");
             for (int i = 0; i < idnum; i++)
@@ -47,7 +45,7 @@ namespace Bank
             }
         }
 
-        public void showInfo()
+        public void ShowInfo()
         {
             int indexNum;//specific index for showing information
             string inId = Convert.ToString(Console.ReadLine());
@@ -70,14 +68,102 @@ namespace Bank
 
         }
 
-        public void create_account()
+        private static string GetUserName()
         {
+            Console.Write("Name:");
+            return Convert.ToString(Console.ReadLine());
+        }
 
-            string accType;
-            string name;
-            int d, m, y;
-            string nominee;
+        private static string GetUserDOB() {
+            bool isDOBValid;
+            DateTime dateTimeDOB = new DateTime();
+            do
+            {
+                try
+                {
+                    Console.Write("Enter your Date of Birth (DD/MM/YYYY) : ");
+                    string dob = Console.ReadLine();
+                    dateTimeDOB = DateTime.ParseExact(dob, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    isDOBValid = true;
+                }
+                catch (Exception)
+                {
+                    Console.Write("Enter a valid date!\n");
+                    isDOBValid = false;
+                }
+            } while (!isDOBValid);
+            return dateTimeDOB.ToString("dd-MM-yyyy", CultureInfo.InvariantCulture);
+        }
+
+        private static string GetNominee()
+        {
+            Console.WriteLine("Enter Nominee name: ");
+            return Convert.ToString(Console.ReadLine());
+        }
+
+        private double InsertBalance(string accType)
+        {
+            switch (accType)
+            {
+                case "Debit":
+                    return InsertDebitBalance();
+                case "Credit":
+                    return InsertCrebitBalance();
+                case "Savings":
+                    Console.WriteLine("Enter account balance: ");
+                    return Convert.ToDouble(Console.ReadLine());
+                default:
+                    Console.WriteLine("Enter account balance: ");
+                    return Convert.ToDouble(Console.ReadLine());
+            }
+        }
+
+        private double InsertDebitBalance()
+        {
             double balance;
+            bool isOverMax = false;
+            do
+            {
+                if (isOverMax)
+                    Console.WriteLine("Debit Account's max value is 100000!");
+
+                Console.WriteLine("Enter account balance: ");
+                balance = Convert.ToDouble(Console.ReadLine());
+                isOverMax = balance > db.maxBalance;
+            } while (isOverMax);
+
+            return balance;
+        }
+
+        private double InsertCrebitBalance()
+        {
+            double balance;
+            bool isUnderMin = false;
+            do
+            {
+                if (isUnderMin)
+                    Console.WriteLine("Credit Account's min val is -100000!");
+
+                Console.WriteLine("Enter account balance: ");
+                balance = Convert.ToDouble(Console.ReadLine());
+                isUnderMin = balance < db.maxBalance;
+            } while (isUnderMin);
+
+            return balance;
+        }
+
+        private string CreateID(string accType)
+        {
+            string newAccountID;
+            newAccountID = id1.GenerateId(); //collect id from id generator
+            newAccountID += accType; //add string to that generated id
+            Console.WriteLine("Your Account Id : " + newAccountID);
+            return newAccountID;
+        }
+
+        public void Create_account()
+        {
+            string accType;
             string input;
             Console.WriteLine("0. Debit Account");
             Console.WriteLine("1. Credit Account");
@@ -85,162 +171,47 @@ namespace Bank
             object ob1 = Console.ReadLine();
             input = Convert.ToString(ob1);
 
-            if (input == "0")
+            switch (input)
             {
+                case "0":
+                    accType = "Debit";
+                    myAccType[idnum] = accType;
+                    myName[idnum] = GetUserName();
+                    myDob[idnum] = GetUserDOB();
+                    myNominee[idnum] = GetNominee();
+                    myBalance[idnum] = InsertBalance(accType);
+                    Console.WriteLine("Created debit account successfully...! ");
+                    id = CreateID("Deb");
+                    GetAcc(id);
+                    break;
 
-                accType = "Debit";
-                myAccType[idnum] = accType;
-                Console.Write("Name:");
+                case "1":
+                    accType = "Credit";
+                    myAccType[idnum] = accType;
+                    myName[idnum] = GetUserName();
+                    myDob[idnum] = GetUserDOB();
+                    myNominee[idnum] = GetNominee();
+                    myBalance[idnum] = InsertBalance(accType);
+                    Console.WriteLine("Created Credit account successfully...! ");
+                    id = CreateID("Cre");
+                    GetAcc(id);
+                    break;
 
-                name = Convert.ToString(Console.ReadLine());
-                myName[idnum] = name;
-                //if user input for date is wrong then it will take untill the input is correct
-                while (val == true)
-                {
-                    Console.WriteLine("Enter date: ");
-
-                    d = Convert.ToInt32(Console.ReadLine());
-                    m = Convert.ToInt32(Console.ReadLine());
-                    y = Convert.ToInt32(Console.ReadLine());
-                    dob.set(d, m, y);
-                    if (dob.printDate() == false)
-                    {
-                        myDob[idnum] = Convert.ToString(d + "-" + m + "-" + y);
-                        val = false;
-                    }
-                    else val = true;
-                }
-                val = true;//debit,credit,savings all used the same val 
-                Console.WriteLine("Enter Nominee name: ");
-                nominee = Convert.ToString(Console.ReadLine());
-                myNominee[idnum] = nominee;
-                //takes input untill balance is correct
-                while (debval == true)
-                {
-                    Console.WriteLine("Enter account balance: ");
-                    balance = Convert.ToDouble(Console.ReadLine());
-                    if (balance > db.maxBalance)
-                    {
-                        Console.WriteLine("Debit Account max value is 100000!");
-                        debval = true;
-                    }
-                    else
-                    {
-                        myBalance[idnum] = balance;
-                        debval = false;
-                    }
-                }
-                debval = true;//debit,credit using the same value
-                Console.WriteLine("Created debit account successfully...! ");
-                //Console.Write("Your Account Id : ");
-                id = id1.GenerateId();//collect id from id generator
-                id = id + "Deb";//add string to that generated id
-                Console.WriteLine("Your Account Id : " + id);
-                GetAcc(id);//store id and increase the index number
-
+                case "2":
+                    accType = "Savings";
+                    myAccType[idnum] = accType;
+                    myName[idnum] = GetUserName();
+                    myDob[idnum] = GetUserDOB();
+                    myNominee[idnum] = GetNominee();
+                    myBalance[idnum] = InsertBalance(accType);
+                    Console.WriteLine("Created Savings account successfully...! ");
+                    id = CreateID("Sav");
+                    GetAcc(id);
+                    break;
             }
-            else if (input == "1")
-            {
-                accType = "Credit";
-                myAccType[idnum] = accType;
-                Console.Write("Name:");
-                // object ob2 = Console.ReadLine();
-                name = Convert.ToString(Console.ReadLine());
-                myName[idnum] = name;
-                //if user input for date is wrong then it will take untill the input is correct
-                while (val == true)
-                {
-                    Console.WriteLine("Enter date: ");
-
-                    d = Convert.ToInt32(Console.ReadLine());
-                    m = Convert.ToInt32(Console.ReadLine());
-                    y = Convert.ToInt32(Console.ReadLine());
-                    dob.set(d, m, y);
-                    if (dob.printDate() == false)
-                    {
-                        myDob[idnum] = Convert.ToString(d + "-" + m + "-" + y);
-                        val = false;
-                    }
-                    else val = true;
-                }
-                val = true;//debit,credit,savings all used the same val 
-                Console.WriteLine("Enter Nominee name: ");
-                nominee = Convert.ToString(Console.ReadLine());
-                myNominee[idnum] = nominee;
-                //takes input untill balance is correct
-                while (debval == true)
-                {
-                    Console.WriteLine("Enter account balance: ");
-                    balance = Convert.ToDouble(Console.ReadLine());
-                    if (balance < cr.minBalance)
-                    {
-                        Console.WriteLine("Credit Account's min val is -100000!");
-                        debval = true;
-                    }
-                    else
-                    {
-                        myBalance[idnum] = balance;
-                        debval = false;
-                    }
-                }
-                debval = true;//debit,credit using the same value
-                Console.WriteLine("Created Credit account successfully...! ");
-                //Console.Write("Your Account Id : ");
-                id = id1.GenerateId();//collect id from id generator
-                id = id + "Cre";//add string to that generated id
-                // Console.Write("Deb");
-                Console.WriteLine("Your Account Id : " + id);
-                GetAcc(id);
-
-            }
-            else if (input == "2")
-            {
-                accType = "Savings";
-                myAccType[idnum] = accType;
-                Console.Write("Name:");
-
-                name = Convert.ToString(Console.ReadLine());
-                myName[idnum] = name;
-                //if user input for date is wrong then it will take untill the input is correct
-                while (val == true)
-                {
-                    Console.WriteLine("Enter date: ");
-
-                    d = Convert.ToInt32(Console.ReadLine());
-                    m = Convert.ToInt32(Console.ReadLine());
-                    y = Convert.ToInt32(Console.ReadLine());
-                    dob.set(d, m, y);
-                    if (dob.printDate() == false)
-                    {
-                        myDob[idnum] = Convert.ToString(d + "-" + m + "-" + y);
-                        val = false;
-                    }
-                    else val = true;
-                }
-                val = true;//debit,credit,savings all used the same val 
-                Console.WriteLine("Enter Nominee name: ");
-                nominee = Convert.ToString(Console.ReadLine());
-                myNominee[idnum] = nominee;
-                Console.WriteLine("Enter account balance: ");
-                balance = Convert.ToDouble(Console.ReadLine());
-                myBalance[idnum] = balance;
-                Console.WriteLine("Created Savings account successfully...! ");
-                //Console.Write("Your Account Id : ");
-                id = id1.GenerateId();//collect id from id generator
-                id = id + "Sav";//add string to that generated id
-                // Console.Write("Deb");
-                Console.WriteLine("Your Account Id : " + id);
-                GetAcc(id);
-
-            }
-
-
-
-
-
         }
 
-        public void deposit()
+        public void Deposit()
         {
             int indexNum;
             string inId = Convert.ToString(Console.ReadLine());
@@ -278,7 +249,8 @@ namespace Bank
             }
 
         }
-        public void withdraw()
+
+        public void Withdraw()
         {
             int indexNum;
             string inId = Convert.ToString(Console.ReadLine());

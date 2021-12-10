@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Bank
 {
@@ -15,7 +11,7 @@ namespace Bank
         public Credit() : base()
         {
         }
-        public Credit(string name, DOB DOB, string nominee, double balance) : base(name, DOB, nominee, balance)
+        public Credit(string name, DateTime dob, string nominee, double balance) : base(name, dob, nominee, balance)
         {
 
         }

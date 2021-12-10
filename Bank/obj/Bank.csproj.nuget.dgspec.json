@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yaniz\\source\\repos\\Bank\\Bank.csproj": {}
+    "/Users/drew/Desktop/yanlace/yw/Bank/Bank.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yaniz\\source\\repos\\Bank\\Bank.csproj": {
+    "/Users/drew/Desktop/yanlace/yw/Bank/Bank.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yaniz\\source\\repos\\Bank\\Bank.csproj",
+        "projectUniqueName": "/Users/drew/Desktop/yanlace/yw/Bank/Bank.csproj",
         "projectName": "Bank",
-        "projectPath": "C:\\Users\\yaniz\\source\\repos\\Bank\\Bank.csproj",
-        "packagesPath": "C:\\Users\\yaniz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yaniz\\source\\repos\\Bank\\obj\\",
+        "projectPath": "/Users/drew/Desktop/yanlace/yw/Bank/Bank.csproj",
+        "packagesPath": "/Users/drew/.nuget/packages/",
+        "outputPath": "/Users/drew/Desktop/yanlace/yw/Bank/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\yaniz\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/drew/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -64,7 +62,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.101/RuntimeIdentifierGraph.json"
         }
       }
     }
