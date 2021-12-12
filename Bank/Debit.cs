@@ -12,17 +12,10 @@ namespace Bank
 
         }
 
-        public Debit(string name, DateTime dob, string nominee, double balance) : base(name, dob, nominee, balance)
+        public Debit(string name, string nominee, double balance) : base(name, nominee, balance)
         {
 
         }
-
-
-
-        /* private bool isDailyTransLimitOver(double amount)
-         {
-         }*/
-        // Bank bn = new Bank();
 
         public override bool deposit(double amount)
         {

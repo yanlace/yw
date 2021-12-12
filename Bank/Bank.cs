@@ -1,5 +1,6 @@
 ﻿using Apache.NMS.ActiveMQ.Util;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 
@@ -18,6 +19,8 @@ namespace Bank
         public string[] myNominee = new string[100];
         public double[] myBalance = new double[100];
 
+        private List<User> users = new();
+
         IdGenerator id1 = new IdGenerator();
         DateTime dob = new DateTime();
         Credit cr = new Credit();
@@ -26,6 +29,51 @@ namespace Bank
         //see in create account
         public bool val = true;
         public bool debval = true;
+
+        public Bank()
+        {
+            User admin = new();
+            admin.name = "Yanique";
+            admin.password = "123";
+            admin.isEmployee = true;
+            users.Add(admin);
+        }
+
+        public User findCustomer(string id)
+        {
+            foreach (User customer in users)
+            {
+                if (customer.Id == id && !customer.isEmployee) return customer;
+            }
+            return null;
+        }
+
+        public User findAdmin(string id)
+        {
+            foreach (User admin in users)
+            {
+                if (admin.Id == id && admin.isEmployee) return admin;
+            }
+            return null;
+        }
+
+        public void ViewAllAccounts()
+        {
+            foreach(User user in users)
+            {
+                if (!user.isEmployee) user.ViewAllBalances();
+            }
+        }
+
+        public bool LoginCustomer(string id, string password)
+        {
+            return findCustomer(id) != null && findCustomer(id).password == password;
+        }
+
+        public bool LoginAdmin(string id, string password)
+        {
+            return findAdmin(id) != null && findAdmin(id).password == password;
+        }
 
         //id storing
         private void GetAcc(string ID)
@@ -161,13 +209,22 @@ namespace Bank
             return newAccountID;
         }
 
+        public void AddUser(bool isEmployee)
+        {
+            User user = new();
+            Console.WriteLine("Your ID: " + user.Id);
+            user.name = GetUserName();
+            user.isEmployee = isEmployee;
+            //todo: set the other user properties
+        }
+
         public void Create_account()
         {
             string accType;
             string input;
-            Console.WriteLine("0. Debit Account");
-            Console.WriteLine("1. Credit Account");
-            Console.WriteLine("2. Savings Account");
+            Console.WriteLine("0. Checking Account");
+            Console.WriteLine("1. Savings Account");
+            Console.WriteLine("2. Loan Account");
             object ob1 = Console.ReadLine();
             input = Convert.ToString(ob1);
 
@@ -185,7 +242,20 @@ namespace Bank
                     GetAcc(id);
                     break;
 
+
                 case "1":
+                    accType = "Savings";
+                    myAccType[idnum] = accType;
+                    myName[idnum] = GetUserName();
+                    myDob[idnum] = GetUserDOB();
+                    myNominee[idnum] = GetNominee();
+                    myBalance[idnum] = InsertBalance(accType);
+                    Console.WriteLine("Created Savings account successfully...! ");
+                    id = CreateID("Sav");
+                    GetAcc(id);
+                    break;
+
+                case "2":
                     accType = "Credit";
                     myAccType[idnum] = accType;
                     myName[idnum] = GetUserName();
@@ -197,17 +267,7 @@ namespace Bank
                     GetAcc(id);
                     break;
 
-                case "2":
-                    accType = "Savings";
-                    myAccType[idnum] = accType;
-                    myName[idnum] = GetUserName();
-                    myDob[idnum] = GetUserDOB();
-                    myNominee[idnum] = GetNominee();
-                    myBalance[idnum] = InsertBalance(accType);
-                    Console.WriteLine("Created Savings account successfully...! ");
-                    id = CreateID("Sav");
-                    GetAcc(id);
-                    break;
+                
             }
         }
 

@@ -16,6 +16,11 @@ namespace Bank
             return true;
         }
 
+        public static string getType()
+        {
+            return "Savings";
+        }
+
         public override bool withdraw(double amount)
         {
             this.ammount = amount;
