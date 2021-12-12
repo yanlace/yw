@@ -10,3 +10,7 @@ Bank/.vs/Bank/xs/project-cache/Bank-Debug.json
 Bank/obj/Debug/net5.0/Bank.csproj.FileListAbsolute.txt
 *.editorconfig
 Bank/.vs/Bank/xs/project-cache/Bank-Debug.json
+*.json
+*.dll
+Bank/.vs/Bank/xs/project-cache/Bank-Debug.json
+Bank/.vs/Bank/xs/project-cache/Bank-Debug.json
