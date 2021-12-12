@@ -11,13 +11,11 @@ namespace Bank
         public Credit() : base()
         {
         }
-        public Credit(string name, DateTime dob, string nominee, double balance) : base(name, dob, nominee, balance)
+        public Credit(string name, string nominee, double balance) : base(name, nominee, balance)
         {
 
         }
-        /*private bool isDailyWithdrawLimitOver(double amount)
-        {
-        }*/
+
         public override bool deposit(double amount)
         {
             this.ammount = amount;
