@@ -5,7 +5,7 @@ namespace Bank
 {
     class User
     {
-        public static int count = 0;
+        public static int counter = 0;
         public string Id { get;}
         public string password { get; set; }
         public string name { get; set; }
@@ -20,36 +20,36 @@ namespace Bank
         
         public User()
         {
-            Id = Convert.ToString(count);
-            count++;
+            Id = Convert.ToString(counter);
+            counter++;
         }
 
         public void OpenNewAccount(char accType)
         {
-            Account account;
+            
             switch (accType)
             {
                 case 'C':
-                    account = new CheckingAccount();
-                    checkingAccounts.Add(account as CheckingAccount);
+                    CheckingAccount checking = new();
+                    checkingAccounts.Add(checking);
                     break;
                 case 'S':
-                    account = new Savings();
-                    savingsAccounts.Add(account as Savings);
+                    //Savings savings = new();
+                    //savingsAccounts.Add(savings);
                     break;
 
                 case 'L':
-                    account = new Loan();
-                    loanAccounts.Add(account as Loan);
+                    //Loan loan = new();
+                    //loanAccounts.Add(loan);
                     break;
             }
         }
 
-        public void ViewAllBalances()
+        public void ViewAllBalancesAndTransactions()
         {
             foreach(CheckingAccount checking in checkingAccounts)
             {
-                Console.WriteLine("Savings Account balance is $" + checking.balance);
+                Console.WriteLine("Checking Account balance is $" + checking.balance);
                 checking.printAccount();
             }
             foreach (Savings savings in savingsAccounts)
@@ -59,9 +59,27 @@ namespace Bank
             }
             foreach (Loan loan in loanAccounts)
             {
-                Console.WriteLine("Savings Account balance is $" + loan.balance);
+                Console.WriteLine("Loan balance is $" + loan.balance);
                 loan.printAccount();
             }
+        }
+
+        public void MakeLoanPayment()
+        {
+            Console.WriteLine("Current Loan Accounts");
+            Console.WriteLine("Choose which to make payment on:");
+            int index = 0;
+            foreach (var loan in loanAccounts)
+            {
+                Console.WriteLine(index + ". make payment Loan Account: $" + loan.balance);
+                index++;
+            }
+
+            int input = Convert.ToInt16(Console.ReadLine());
+
+            Console.WriteLine("Enter the amount you would like to pay on the loan:");
+            double amount = Convert.ToDouble(Console.ReadLine());
+            loanAccounts[input].deposit(amount);
         }
     }
 }

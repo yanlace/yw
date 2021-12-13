@@ -22,7 +22,6 @@ namespace Bank
         private List<User> users = new();
 
         IdGenerator id1 = new IdGenerator();
-        DateTime dob = new DateTime();
         Credit cr = new Credit();
         Debit db = new Debit();
         Savings sv = new Savings();
@@ -32,11 +31,23 @@ namespace Bank
 
         public Bank()
         {
-            User admin = new();
-            admin.name = "Yanique";
-            admin.password = "123";
-            admin.isEmployee = true;
-            users.Add(admin);
+            //admin user
+            CreateMockData("Yanique", "123", true); 
+            //regular customer users
+            CreateMockData("Drew", "abcd", false);
+            CreateMockData("wallace", "efgh", false);
+        }
+
+        private void CreateMockData(
+            string name,
+            string password,
+            bool isEmployee)
+        {
+            User user = new();
+            user.name = name;
+            user.password = password;
+            user.isEmployee = isEmployee;
+            users.Add(user);
         }
 
         public User findCustomer(string id)
@@ -61,7 +72,12 @@ namespace Bank
         {
             foreach(User user in users)
             {
-                if (!user.isEmployee) user.ViewAllBalances();
+                if (!user.isEmployee)
+                {
+                    Console.WriteLine("\t\t" + user.name + "'s balance and transactions.");
+                    user.ViewAllBalancesAndTransactions();
+                    Console.WriteLine("\n\n\n");
+                }
             }
         }
 
@@ -265,9 +281,7 @@ namespace Bank
                     Console.WriteLine("Created Credit account successfully...! ");
                     id = CreateID("Cre");
                     GetAcc(id);
-                    break;
-
-                
+                    break;   
             }
         }
 

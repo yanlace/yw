@@ -3,28 +3,24 @@ namespace Bank
 {
     class Loan : Account
     {
-
         public Loan() : base()
         {
+            type = "Loan";
+            id = counter;
+            counter++;
         }
 
         public override bool deposit(double amount)
         {
-            this.ammount = amount;
-            this.balance = balance + ammount;
-            Console.WriteLine("You account balance has been deposited.Balance is: " + balance);
+            this.balance -= amount;
+            Console.WriteLine("You paid $" + amount
+                + " balance has been paid. The balance is: " + balance);
             return true;
-        }
-
-        public static string getType()
-        {
-            return "Loan";
         }
 
         public override bool withdraw(double amount)
         {
-            this.ammount = amount;
-            this.balance = balance - ammount;
+            this.balance += amount;
             Console.WriteLine("You account balance has been withdrawed.Balance is: " + balance);
             return true;
         }

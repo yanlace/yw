@@ -12,14 +12,8 @@ namespace Bank
 
         }
 
-        public Debit(string name, string nominee, double balance) : base(name, nominee, balance)
-        {
-
-        }
-
         public override bool deposit(double amount)
         {
-            this.ammount = amount;
             if (amount > maxBalance)
             {
                 Console.WriteLine("You can not deposit more than 100000!");
@@ -29,7 +23,7 @@ namespace Bank
             {
                 // int num = bn.passArrNum;
                 // bn.myBalance[num] = bn.myBalance[num] + ammount;
-                this.balance = balance + ammount;
+                this.balance += amount;
                 Console.WriteLine("You account balance has been deposited.Balance is: " + balance);
                 return true;
             }
@@ -37,7 +31,6 @@ namespace Bank
 
         public override bool withdraw(double amount)
         {
-            this.ammount = amount;
 
             if (amount > dailyTransLimit)
             {
@@ -52,7 +45,7 @@ namespace Bank
             }
             else
             {
-                this.balance = balance - ammount;
+                this.balance -= amount;
                 Console.WriteLine("You account balance has been withdrawed.Balance is: " + balance);
                 return true;
             }

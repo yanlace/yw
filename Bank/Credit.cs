@@ -11,21 +11,16 @@ namespace Bank
         public Credit() : base()
         {
         }
-        public Credit(string name, string nominee, double balance) : base(name, nominee, balance)
-        {
 
-        }
 
         public override bool deposit(double amount)
         {
-            this.ammount = amount;
-            this.balance = balance + ammount;
+            this.balance += amount;
             Console.WriteLine("You account balance has been deposited.Balance is: " + balance);
             return true;
         }
         public override bool withdraw(double amount)
         {
-            this.ammount = amount;
             if (amount < this.minBalance)
             {
                 Console.WriteLine("Your Account don't have sufficient ammount of money!");
@@ -39,7 +34,7 @@ namespace Bank
             else
             {
 
-                this.balance = balance - ammount;
+                this.balance -= amount;
                 Console.WriteLine("You account balance has been withdrawed.Balance is: " + balance);
                 return true;
             }

@@ -59,10 +59,11 @@ namespace Bank
             while (true)
             {
                 Console.WriteLine("What you want to do:");
-                Console.WriteLine("0. View all account information");
+                Console.WriteLine("0. View all account balances and transactions");
                 Console.WriteLine("1. Open a checking account");
                 Console.WriteLine("2. Open a savings account");
                 Console.WriteLine("3. Apply for a loan");
+                Console.WriteLine("6. Make Loan Payment");
                 Console.WriteLine("9. To Log Out");
                 object ob1 = Console.ReadLine();
                 input = Convert.ToString(ob1);
@@ -70,15 +71,19 @@ namespace Bank
                 switch (input)
                 {
                     case "0":
+                        user.ViewAllBalancesAndTransactions();
                         break;
                     case "1":
                         user.OpenNewAccount('C');
                         break;
                     case "2":
-                        user.OpenNewAccount('S');
+                        //user.OpenNewAccount('S');
                         break;
                     case "3":
-                        user.OpenNewAccount('L');
+                        //user.OpenNewAccount('L');
+                        break;
+                    case "4":
+                        user.MakeLoanPayment();
                         break;
                     case "9":
                         WelcomeScreen(bank);
@@ -129,7 +134,8 @@ namespace Bank
                 switch (input)
                 {
                     case "0":
-                        setTitle("All Account Balances");
+                        setTitle("All Account Balances and Transactions");
+                        Console.Write("\n");
                         bank.ViewAllAccounts();
                         break;
                     case "9":

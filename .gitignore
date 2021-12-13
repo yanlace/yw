@@ -43,3 +43,16 @@ Bank/obj/Debug/net5.0/Bank.pdb
 Bank/obj/Debug/net5.0/ref/Bank.dll
 Bank/obj/project.assets.json
 Bank/obj/project.nuget.cache
+*.dll
+*.xml
+Bank/obj/Bank.csproj.nuget.dgspec.json
+Bank/obj/Bank.csproj.nuget.g.props
+Bank/obj/Debug/net5.0/Bank.csproj.CoreCompileInputs.cache
+Bank/obj/Debug/net5.0/Bank.csproj.FileListAbsolute.txt
+Bank/obj/Debug/net5.0/Bank.csprojAssemblyReference.cache
+Bank/obj/Debug/net5.0/Bank.dll
+Bank/obj/Debug/net5.0/Bank.GeneratedMSBuildEditorConfig.editorconfig
+Bank/obj/Debug/net5.0/Bank.pdb
+Bank/obj/Debug/net5.0/ref/Bank.dll
+Bank/obj/project.assets.json
+Bank/obj/project.nuget.cache

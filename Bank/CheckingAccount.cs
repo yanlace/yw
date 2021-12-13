@@ -5,6 +5,10 @@ namespace Bank
     {
         public CheckingAccount() : base()
         {
+            type = "Checking Account";
+            id = counter;
+            counter++;
+            Console.WriteLine(counter);
         }
 
         public override bool deposit(double amount)
@@ -16,12 +20,5 @@ namespace Bank
         {
             throw new NotImplementedException();
         }
-
-        public static string getType()
-        {
-            return "Checking Account";
-        }
-
-        
     }
 }

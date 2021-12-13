@@ -5,12 +5,11 @@ namespace Bank
 {
    abstract class Account
     {
-        public readonly string nickName;
-        public readonly string ID;
-        public readonly string nominee;
+        protected static int counter = 1;
+        protected int id { get; set; }
         public double balance;
         protected string type;
-        public double ammount;
+
         public abstract bool deposit(double amount);
 
         public abstract bool withdraw(double amount);
@@ -21,17 +20,26 @@ namespace Bank
         }
         public void printAccount()
         {
-            Console.WriteLine("Name : " + nickName);
-            Console.WriteLine("Balance :" + balance);
+            Console.WriteLine("ID : " + id);
+            Console.WriteLine("Balance : $" + balance);
         }
         public Account()
         {
+            balance = 0.0;
         }
-        public Account(string name, string nominee, double balance)
+        public Account(double balance)
         {
-            this.nickName = name;
-            this.nominee = nominee;
             this.balance = balance;
+        }
+
+        public string getType()
+        {
+            return type;
+        }
+
+        public int getID()
+        {
+            return id;
         }
     }
 }
