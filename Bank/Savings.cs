@@ -6,27 +6,30 @@ namespace Bank
     {
         public Savings() : base()
         {
+            type = "Savings Account";
+            id = counter;
+            counter++;
         }
 
-        public override bool deposit(double amount)
+        public Savings(double balance) : base()
         {
-            this.ammount = amount;
-            this.balance = balance + ammount;
-            Console.WriteLine("You account balance has been deposited.Balance is: " + balance);
-            return true;
+            this.balance = balance;
+            type = "Loan Account";
+            id = counter;
+            counter++;
         }
 
-        public static string getType()
+        public override void deposit(double amount)
         {
-            return "Savings";
+            this.balance += amount;
+            Console.WriteLine("You account balance has been deposited.Balance is: " + balance + "\n");
         }
 
-        public override bool withdraw(double amount)
+        public override void withdraw(double amount)
         {
-            this.ammount = amount;
-            this.balance = balance - ammount;
-            Console.WriteLine("You account balance has been withdrawed.Balance is: " + balance);
-            return true;
-        }
+
+            this.balance -= amount;
+            Console.WriteLine("You account balance has been withdrawed.Balance is: " + balance + "\n");
+        } 
     }
 }

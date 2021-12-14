@@ -3,30 +3,47 @@ namespace Bank
 {
     class Loan : Account
     {
+        double interestRate = 0.07;
+        int durationInMonths = 24;
+        double principalAmount;
 
         public Loan() : base()
         {
+            type = "Loan Account";
+            id = counter;
+            counter++;
         }
 
-        public override bool deposit(double amount)
+        public Loan(double principalAmount) : base()
         {
-            this.ammount = amount;
-            this.balance = balance + ammount;
-            Console.WriteLine("You account balance has been deposited.Balance is: " + balance);
-            return true;
+            this.principalAmount = principalAmount;
+            balance = principalAmount;
+            type = "Loan Account";
+            id = counter;
+            counter++;
         }
 
-        public static string getType()
+        public override void deposit(double amount)
         {
-            return "Loan";
+            this.balance -= amount;
+            Console.WriteLine("You paid $" + amount
+                + " towards the loan balance.\nThe balance is: " + balance + "\n");
         }
 
-        public override bool withdraw(double amount)
+        public override void withdraw(double amount)
         {
-            this.ammount = amount;
-            this.balance = balance - ammount;
-            Console.WriteLine("You account balance has been withdrawed.Balance is: " + balance);
-            return true;
+            this.balance += amount;
+            Console.WriteLine("You account balance has been withdrawed.\nBalance is: " + balance + "\n");
+        }
+
+        private void CompoundInterest()
+        {
+            balance += CalculateMonthlyInterest();
+        }
+
+        private double CalculateMonthlyInterest()
+        {
+            return (interestRate / 12) * principalAmount;
         }
     }
 }
