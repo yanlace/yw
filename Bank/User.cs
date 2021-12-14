@@ -89,7 +89,7 @@ namespace Bank
             int index = 0;
             foreach (var loan in loanAccounts)
             {
-                Console.WriteLine(index + ". make payment Loan Account: $" + loan.balance);
+                Console.WriteLine(index + ") Make payment Loan Account: $" + loan.balance);
                 index++;
             }
 
