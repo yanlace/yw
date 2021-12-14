@@ -63,7 +63,7 @@ namespace Bank
                 Console.WriteLine("1. Open a checking account");
                 Console.WriteLine("2. Open a savings account");
                 Console.WriteLine("3. Apply for a loan");
-                Console.WriteLine("6. Make Loan Payment");
+                Console.WriteLine("4. Make Loan Payment");
                 Console.WriteLine("9. To Log Out");
                 object ob1 = Console.ReadLine();
                 input = Convert.ToString(ob1);
