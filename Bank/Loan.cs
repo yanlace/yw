@@ -27,13 +27,13 @@ namespace Bank
         {
             this.balance -= amount;
             Console.WriteLine("You paid $" + amount
-                + " towards the loan balance.\nThe balance is: " + balance);
+                + " towards the loan balance.\nThe balance is: " + balance + "\n");
         }
 
         public override void withdraw(double amount)
         {
             this.balance += amount;
-            Console.WriteLine("You account balance has been withdrawed.\nBalance is: " + balance);
+            Console.WriteLine("You account balance has been withdrawed.\nBalance is: " + balance + "\n");
         }
 
         private void CompoundInterest()
