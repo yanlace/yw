@@ -77,10 +77,10 @@ namespace Bank
                         user.OpenNewAccount('C');
                         break;
                     case "2":
-                        //user.OpenNewAccount('S');
+                        user.OpenNewAccount('S');
                         break;
                     case "3":
-                        //user.OpenNewAccount('L');
+                        user.OpenNewAccount('L');
                         break;
                     case "4":
                         user.MakeLoanPayment();

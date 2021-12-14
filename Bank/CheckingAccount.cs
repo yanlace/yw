@@ -11,14 +11,24 @@ namespace Bank
             Console.WriteLine(counter);
         }
 
-        public override bool deposit(double amount)
+        public CheckingAccount(double balance) : base()
         {
-            throw new NotImplementedException();
+            this.balance = balance;
+            type = "Loan Account";
+            id = counter;
+            counter++;
         }
 
-        public override bool withdraw(double amount)
+        public override void deposit(double amount)
         {
-            throw new NotImplementedException();
+            this.balance += amount;
+            Console.WriteLine("You account balance has been deposited.\nBalance is: " + balance);
+        }
+
+        public override void withdraw(double amount)
+        {
+            this.balance -= amount;
+            Console.WriteLine("You account balance has been withdrawed.\nBalance is: " + balance);
         }
     }
 }

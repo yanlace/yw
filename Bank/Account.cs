@@ -10,9 +10,9 @@ namespace Bank
         public double balance;
         protected string type;
 
-        public abstract bool deposit(double amount);
+        public abstract void deposit(double amount);
 
-        public abstract bool withdraw(double amount);
+        public abstract void withdraw(double amount);
         
         public double getBalance()
         {
@@ -21,7 +21,7 @@ namespace Bank
         public void printAccount()
         {
             Console.WriteLine("ID : " + id);
-            Console.WriteLine("Balance : $" + balance);
+            Console.WriteLine("Balance : $" + balance + "\n");
         }
         public Account()
         {
@@ -40,6 +40,12 @@ namespace Bank
         public int getID()
         {
             return id;
+        }
+
+        public void DisplayAccountCreatedMessage()
+        {
+            Console.WriteLine(type + " created successfully!");
+            Console.WriteLine("Your account ID is " + id);
         }
     }
 }
